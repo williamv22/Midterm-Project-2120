@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
     public string horizontalInput;
     public string verticalInput;
     public float movementSpeed;
+    
 
     private CharacterController charController;
 
