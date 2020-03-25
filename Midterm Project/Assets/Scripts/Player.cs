@@ -8,11 +8,18 @@ public class Player : MonoBehaviour
     public float mouseSensitivity;
     public Transform playerBody;
     private float xAxisClamp;
+    public GameObject Enemy;
+
+    private int timer;
+    private int timerx;
 
     private void Awake()
     {
         LookCursor();
         xAxisClamp = 0.0f;
+        timer = 0;
+        timerx = 1;
+        InvokeRepeating("SpawnMan", 1, 5);
     }
 
     private void LookCursor()
@@ -26,10 +33,28 @@ public class Player : MonoBehaviour
 
     }
 
+    public void SpawnMan()
+    {
+        Instantiate(Enemy, new Vector3(Random.Range(5f, 15f), -1.47f, Random.Range(5f, 15f)), transform.rotation);
+    }
+
     // Update is called once per frame
     void Update()
     {
         CameraRotation();
+       /* timer = timer + timerx;
+        print(timer);*/
+
+        
+      /*  if (timer >= 500)
+        {
+
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+            Instantiate(Enemy, new Vector3(Random.Range(5f, 15f), -1.47f, Random.Range(5f, 15f)), transform.rotation); 
+            timer = 0;
+            timer = 0;
+        }*/
+
     }
 
     private void CameraRotation()
